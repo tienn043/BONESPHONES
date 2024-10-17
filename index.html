@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown Timer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: rgb(82, 45, 128);
+        background: linear-gradient(
+          45deg,
+          rgba(82, 45, 128, 1) 36%,
+          rgba(245, 102, 0, 1) 100%
+        );
+        margin: 0;
+      }
+
+      .timer {
+        text-align: center;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .timer h1 {
+        margin: 0 0 20px;
+      }
+
+      .countdown {
+        font-size: 10rem;
+        font-weight: bold;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="timer">
+      <h1>bones v phones</h1>
+      <div id="countdown" class="countdown"></div>
+    </div>
+
+    <script>
+      // Set the date and time you're counting down to (Eastern Time)
+      const targetDateET = new Date("2024-10-19T08:00:00-05:00").getTime();
+  
+      // Update the countdown every 1 second
+      const countdownTimer = setInterval(function() {
+  
+        // Get the current time (converted to Eastern Time)
+        const nowUTC = new Date().getTime();
+        const offset = new Date().getTimezoneOffset() * 60000;
+        const nowET = new Date(nowUTC - offset + (5 * 60 * 60000)).getTime(); // Convert to ET
+  
+        // Find the difference between now and the countdown target date
+        const timeLeft = targetDateET - nowET;
+  
+        // Calculate days, hours, minutes, and seconds
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+  
+        // Display the result
+        document.getElementById("countdown").innerHTML =
+          `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  
+        // If the countdown is over, display a message
+        if (timeLeft < 0) {
+          clearInterval(countdownTimer);
+          document.getElementById("countdown").innerHTML = "Event has started!";
+        }
+      }, 1000);
+    </script>
+  
+  </body>
+</html>
