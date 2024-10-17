@@ -25,6 +25,7 @@
         text-align: center;
         background-color: #fff;
         padding: 20px;
+        width: 70%;
       }
 
       .timer h1 {
@@ -69,7 +70,7 @@
         // Display the result
         document.getElementById(
           "countdown"
-        ).innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        ).innerHTML = `${days}:${hours}:${minutes}:${seconds}`;
 
         // If the countdown is over, display a message
         if (timeLeft < 0) {
