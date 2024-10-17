@@ -25,8 +25,6 @@
         text-align: center;
         background-color: #fff;
         padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
 
       .timer h1 {
@@ -49,28 +47,30 @@
     <script>
       // Set the date and time you're counting down to (Eastern Time)
       const targetDateET = new Date("2024-10-19T08:00:00-05:00").getTime();
-  
+
       // Update the countdown every 1 second
-      const countdownTimer = setInterval(function() {
-  
+      const countdownTimer = setInterval(function () {
         // Get the current time (converted to Eastern Time)
         const nowUTC = new Date().getTime();
         const offset = new Date().getTimezoneOffset() * 60000;
-        const nowET = new Date(nowUTC - offset + (5 * 60 * 60000)).getTime(); // Convert to ET
-  
+        const nowET = new Date(nowUTC - offset + 5 * 60 * 60000).getTime(); // Convert to ET
+
         // Find the difference between now and the countdown target date
         const timeLeft = targetDateET - nowET;
-  
+
         // Calculate days, hours, minutes, and seconds
         const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const hours = Math.floor(
+          (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
         const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-  
+
         // Display the result
-        document.getElementById("countdown").innerHTML =
-          `${days}d ${hours}h ${minutes}m ${seconds}s`;
-  
+        document.getElementById(
+          "countdown"
+        ).innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
         // If the countdown is over, display a message
         if (timeLeft < 0) {
           clearInterval(countdownTimer);
@@ -78,6 +78,5 @@
         }
       }, 1000);
     </script>
-  
   </body>
 </html>
