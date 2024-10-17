@@ -12,29 +12,34 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-        background-image: url('./fightnight.jpg'); /* Replace with your PNG file path */
+        background-image: url("./fightnight.jpg"); /* Replace with your PNG file path */
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        background-attachment: fixed; 
+        background-attachment: fixed;
         margin: 0;
       }
 
-          /* Grayscale overlay */
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(88, 88, 88, 0.7); /* White overlay with transparency */
-      filter: grayscale(90%); /* Apply grayscale to the overlay */
-      z-index: -1;
-    }
+      /* Grayscale overlay */
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(
+          88,
+          88,
+          88,
+          0.7
+        ); /* White overlay with transparency */
+        filter: grayscale(90%); /* Apply grayscale to the overlay */
+        z-index: -1;
+      }
       .timer {
         text-align: center;
         background-color: #fff;
-        padding: 20px;
+        padding: 10px;
         width: 70%;
       }
 
@@ -43,9 +48,31 @@
       }
 
       .countdown {
-        font-size: 10rem;
+        font-size: 8rem;
         font-weight: bold;
         color: #333;
+      }
+
+      /* Media Query: Smaller font sizes for screens smaller than 768px */
+      @media (max-width: 768px) {
+        .timer h1 {
+          font-size: 1.5rem; /* Adjust title font size for smaller screens */
+        }
+
+        .countdown {
+          font-size: 1.5rem; /* Adjust countdown font size for smaller screens */
+        }
+      }
+
+      /* Media Query: Even smaller font sizes for screens smaller than 480px (e.g., mobile phones) */
+      @media (max-width: 480px) {
+        .timer h1 {
+          font-size: 1.2rem; /* Further adjust title font size for small phones */
+        }
+
+        .countdown {
+          font-size: 1.2rem; /* Further adjust countdown font size for small phones */
+        }
       }
     </style>
   </head>
@@ -54,8 +81,7 @@
       <h1>bones v phones</h1>
       <div id="countdown" class="countdown"></div>
     </div>
-    <div class="overlay"></div> 
-
+    <div class="overlay"></div>
 
     <script>
       // Set the date and time you're counting down to (Eastern Time)
